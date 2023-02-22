@@ -38,7 +38,7 @@ public class BaseTest {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--no-sandbox");
         chromeOptions.addArguments("--start-maximized");
-        chromeOptions.addArguments("--headless");
+//        chromeOptions.addArguments("--headless");
 
         chromeDriver = new ChromeDriver(chromeOptions);
     }
@@ -51,17 +51,5 @@ public class BaseTest {
     @AfterAll
     public static void tearDown() {
         chromeDriver.quit();
-    }
-
-    private static String getChromeDriverFileName() {
-        ClassLoader classLoader = BaseTest.class.getClassLoader();
-
-        URL driverURL = classLoader.getResource(CHROME_DRIVER_FILE_NAME);
-
-        if (driverURL == null) {
-            Assertions.fail("Unable to locate chrome driver");
-        }
-
-        return driverURL.getFile();
     }
 }
